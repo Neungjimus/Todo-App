@@ -3,19 +3,29 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* 귀여운 폰트 느낌 */
+  background: #fff8f0; /* 부드러운 크림색 배경 */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(255, 165, 180, 0.2); /* 핑크빛 그림자 */
 }
 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, transform 300ms;
+  cursor: pointer;
+  border-radius: 50%; /* 둥글둥글 */
+  background: #ffe4e1; /* 연한 분홍색 배경 */
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 8px #ff6f91cc);
+  transform: scale(1.1) rotate(10deg);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 8px #61dafbcc);
+  transform: scale(1.1) rotate(-10deg);
 }
 
 @keyframes logo-spin {
@@ -35,8 +45,62 @@
 
 .card {
   padding: 2em;
+  background: #fff0f5; /* 라벤더 핑크 느낌 */
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(255, 182, 193, 0.3);
+  color: #444;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 .read-the-docs {
-  color: #888;
+  color: #b56576; /* 따뜻한 핑크 톤 */
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
+
+.todo-button {
+  background-color: #ffb6c1; /* 기본: 연한 핑크 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4em 0.8em;
+  margin: 0 0.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-button:hover {
+  background-color: #ff69b4; /* hover: 진한 핑크 */
+  transform: translateY(-2px);
+}
+
+.todo-button:active {
+  background-color: #c71585; /* 클릭: 보라빛 진한 핑크 */
+  transform: scale(0.97);
+}
+
+.edit-button {
+  background-color: #87cefa; /* 수정: 하늘색 */
+}
+.edit-button:hover {
+  background-color: #00bfff;
+}
+.edit-button:active {
+  background-color: #1e90ff;
+}
+
+.delete-button {
+  background-color: #ffa07a; /* 삭제: 살구색 */
+}
+.delete-button:hover {
+  background-color: #ff6347;
+}
+.delete-button:active {
+  background-color: #ff4500;
+}
+
+

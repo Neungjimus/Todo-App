@@ -1,4 +1,7 @@
 import { useState } from "react";
+import TodoForm from "./components/TodoForm";
+import Quiz from "./components/Quiz";
+import Time from "./components/Time";
 import "./App.css";
 
 function App() {
@@ -8,39 +11,23 @@ function App() {
     { id: 2, content: "잠 자기", completed: false },
   ]);
 
+  const handleAdd = (text) => {
+    const newTodo = { id: Date.now(), content: text, completed: false };
+    setTodoList([...todoList, newTodo]);
+  };
+
   return (
     <>
       <h1>Todo 앱</h1>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
       <hr />
-      <TodoInput todoList={todoList} setTodoList={setTodoList} />
+      <TodoForm onAdd={handleAdd} /> 
+      <Quiz />
+      <Time />
     </>
   );
 }
 
-function TodoInput({ todoList, setTodoList }) {
-  const [inputValue, setInputValue] = useState("");
-
-  return (
-    <>
-      <input
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
-      />
-      <button
-        onClick={() => {
-          if (inputValue.trim() === "") return; // 빈값 추가 방지
-          const newTodo = { id: Number(new Date()), content: inputValue, completed: false };
-          const newTodoList = [...todoList, newTodo];
-          setTodoList(newTodoList);
-          setInputValue("");
-        }}
-      >
-        추가하기
-      </button>
-    </>
-  );
-}
 
 function TodoList({ todoList, setTodoList }) {
   return (
@@ -54,7 +41,7 @@ function TodoList({ todoList, setTodoList }) {
 
 function Todo({ todo, setTodoList }) {
   const [inputValue, setInputValue] = useState(todo.content);
-  const [isEditing, setIsEditing] = useState(false); // 오타 수정
+  const [isEditing, setIsEditing] = useState(false); 
 
   const toggleCompleted = () => {
     setTodoList(prev =>
@@ -97,11 +84,12 @@ function Todo({ todo, setTodoList }) {
           <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
             {todo.content}
           </span>
-          <button onClick={() => setIsEditing(true)}>수정</button>
+          <button className="todo-button edit-button" onClick={() => setIsEditing(true)}>수정</button>
           <button
-            onClick={() => {
-              setTodoList(prev => prev.filter(el => el.id !== todo.id));
-            }}
+          className="todo-button delete-button"
+          onClick={() => {
+            setTodoList(prev => prev.filter(el => el.id !== todo.id));
+          }}
           >
             삭제
           </button>
